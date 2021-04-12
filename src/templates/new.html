@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="UNCC Notes App">
+        <title>Niner Notes App - New Note</title>
+        <!-- styles -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='forms.css') }}">
+    </head>
+    <body>
+	<!-- Start Header -->
+<table border="0" width="100%" cellpadding="0" cellspacing="0" >
+  <tr>
+  	 <td>
+  	 	<table border="0" width="85%" cellpadding="10" cellspacing="0" align="center">
+           <tr>
+		   
+           	   <td>
+           	   	  <font face="arial" color="white" size="5">
+           	       <strong>Notes</strong>
+           	      </font>
+           	   </td>
+           	   <td width="30%">&nbsp;</td>
+
+           	   <td><a href="{{ url_for('index') }}">
+           	   	  <font face="arial" color="#a0aaaf" size="3">
+           	       Home
+           	     </font></a>
+           	   </td>
+
+           	   <td><a href="{{ url_for('get_notes') }}">
+           	   	  <font face="arial" color="#a0aaaf" size="3">
+           	       My Notes
+           	     </font></a>
+           	   </td>
+
+           	   <td><a href="{{ url_for('new_note') }}" style="background-color: #fe514b;">
+           	   	  <font face="arial" color="#a0aaaf" size="3">
+           	       Add Note
+           	     </font></a>
+           	   </td>
+			   <td><a href="{{ url_for('about') }}">
+           	   	  <font face="arial" color="#a0aaaf" size="3">
+           	       About
+           	     </font></a>
+           	   </td>
+			   <td><a href="{{ url_for('contact') }}">
+           	   	  <font face="arial" color="#a0aaaf" size="3">
+           	       Contact
+           	     </font></a>
+           	   </td>
+			   <td><a href="{{ url_for('homework') }}">
+				   <font face="arial" color="#a0aaaf" size="3">
+					   Homework
+				   </font></a>
+			   </td>
+
+			   <td><a href="{{ url_for('logout') }}">
+           	   	  <font face="arial" color="#a0aaaf" size="3">
+           	       Sign Out
+           	     </font></a>
+           	   </td>
+           	   
+           </tr>
+  	 	</table>
+  	 </td>
+  </tr>
+</table>
+<!-- End Header -->
+
+
+        <h1>Welcome {{user}}, to the Niner Notes App!</h1>
+		<h2>Add a new note!</h2>
+	<div class="new-note-form">
+		<br>
+		{% if note %}
+		<form action="{{ url_for('update_note', note_id=note.id) }}" method="post">
+		{% else %}
+			<form action="new" method="post">
+			{% endif %}
+
+			   <p><label>Title </label></p><p>  <input style="width: 700px;" type="text" name="title" value="{% if note %}{{note.title}} {% endif %}"/></p>
+				<p><label>Note </label></p>
+				<p>
+				<textarea name="noteText"  rows="25" cols="125">
+				{% if note %}
+						{{note.text}}
+				{% else %}
+				
+				{% endif %}
+
+
+				</textarea>
+				</p>
+				<p>
+				{% if note %}
+				<input type="submit" value="Update Note"/>
+				{% else %}
+				<input type="submit" value="Add Note"/>
+				{% endif %}
+				</p>
+			</form>
+		</form>
+	</div>
+    </body>
+</html>

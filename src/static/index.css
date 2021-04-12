@@ -1,0 +1,53 @@
+
+
+body {
+	background-color: #253239;
+    padding: 50px 50px;
+	background-size: cover;
+	background-repeat: no-repeat;
+    }
+	
+.box {
+	
+	background-image: url(img/new.png);
+	padding: 200px 100px;
+	margin: 100px;
+	background-size: cover;
+}
+
+a:link {
+	text-decoration: none;
+	}
+	
+a:hover {
+  background-color: #f26532;
+}
+
+h1{
+    color: white;
+	text-align: center;
+	margin: 100px;
+}
+h2{
+    color: white;
+	}
+table{
+	padding: 10px;
+	font-family: "Lucida Sans Unicode";
+	margin: auto;
+}
+table th{
+	text-align: left;
+}
+table td{
+	padding-right: 5px;
+}
+.about-us-text{
+    color: white;
+    text-align: center;
+    margin: 15%;
+    font-family: "Lucida Sans Unicode";
+    font-size: larger;
+}
+
+	

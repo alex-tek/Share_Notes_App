@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="UNCC Notes App">
+        <title>Niner Notes App</title>
+        <!-- styles -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    </head>
+
+<body>
+	<!-- Start Header -->
+<table border="0" width="100%" cellpadding="0" cellspacing="0" >
+  <tr>
+  	 <td>
+  	 	<table border="0" width="85%" cellpadding="10" cellspacing="0" align="center">
+           <tr>
+		   
+		   
+           	   <td>
+           	   	  <font face="arial" color="white" size="5">
+           	       <strong>Notes</strong>
+           	      </font>
+           	   </td>
+           	   <td width="30%">&nbsp;</td>
+			   {% if user %}
+
+           	   <td><a href="{{ url_for('index') }}">
+           	   	  <font face="arial" color="#a0aaaf" size="3">
+           	       Home
+           	     </font></a>
+           	   </td>
+
+           	   <td><a href="{{ url_for('get_notes') }}">
+           	   	  <font face="arial" color="#a0aaaf" size="3">
+           	       My Notes
+           	     </font></a>
+           	   </td>
+
+           	   <td><a href="{{ url_for('new_note') }}">
+           	   	  <font face="arial" color="#a0aaaf" size="3">
+           	       Add Note
+           	     </font></a>
+           	   </td>
+			   <td><a href="{{ url_for('about') }}" style="background-color: #fe514b;">
+           	   	  <font face="arial" color="#a0aaaf" size="3">
+           	       About
+           	     </font></a>
+           	   </td>
+			   <td><a href="{{ url_for('contact') }}" >
+           	   	  <font face="arial" color="#a0aaaf" size="3">
+           	       Contact
+           	     </font></a>
+				  </td>
+				  
+				<td><a href="{{ url_for('homework') }}">
+					<font face="arial" color="#a0aaaf" size="3">
+						Homework
+					</font></a>
+				</td>
+
+			   <td><a href="{{ url_for('logout') }}">
+           	   	  <font face="arial" color="#a0aaaf" size="3">
+           	       Sign Out
+           	     </font></a>
+           	   </td>
+
+
+			   {% else %}
+			   
+			   <td><a href="{{ url_for('index') }}">
+           	   	  <font face="arial" color="#a0aaaf" size="3">
+           	       Home
+           	     </font></a>
+           	   </td>
+			   <td><a href="{{ url_for('about') }}" style="background-color: #fe514b;">
+           	   	  <font face="arial" color="#a0aaaf" size="3">
+           	       About
+           	     </font></a>
+           	   </td>
+			   <td><a href="{{ url_for('contact') }}">
+           	   	  <font face="arial" color="#a0aaaf" size="3">
+           	       Contact
+           	     </font></a>
+           	   </td>
+           	   <td><a href="{{ url_for('login') }}">
+           	   	  <font face="arial" color="#a0aaaf" size="3">
+           	       Sign In
+           	     </font></a>
+           	   </td>
+           	   <td><a href="{{ url_for('register') }}">
+           	   	  <font face="arial" color="#a0aaaf" size="3">
+           	       Sign Up
+           	     </font></a>
+           	   </td>
+
+			   
+			   {% endif %}
+           	   
+           </tr>
+  	 	</table>
+  	 </td>
+  </tr>
+</table>
+<!-- End Header -->
+	
+
+        <h1>About Us</h1>
+		<p class="about-us-text">
+			We are A Zebra, also known as Group 23. We are working on this Niners Notes App as a group project.
+			Dr. Najjar is the best teacher ever and we've learned a lot in her class.
+			We hope to use the skills gained in this project to further our skills in the future.
+		</p>
+
+
+    </body>
+</html>

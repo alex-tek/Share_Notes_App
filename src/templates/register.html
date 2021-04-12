@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Niner Notes App</title>
+    <link rel="stylesheet" href="static/main.css">
+    <link rel="stylesheet" href="static/forms.css">
+</head>
+    <body>
+	<!-- Start Header -->
+<table border="0" width="100%" cellpadding="0" cellspacing="0" >
+  <tr>
+  	 <td>
+  	 	<table border="0" width="85%" cellpadding="10" cellspacing="0" align="center">
+           <tr>
+		   
+           	   <td>
+           	   	  <font face="arial" color="white" size="5">
+           	       <strong>Notes</strong>
+           	      </font>
+           	   </td>
+           	   <td width="30%">&nbsp;</td>
+			   {% if user %}
+           	   <td><a href="{{ url_for('logout') }}">
+           	   	  <font face="arial" color="#a0aaaf" size="3">
+           	       Sign  Out
+           	     </font></a>
+           	   </td>
+			   {% else %}
+			   
+			   <td><a href="{{ url_for('index') }}">
+           	   	  <font face="arial" color="#a0aaaf" size="3">
+           	       Home
+           	     </font></a>
+           	   </td>
+			   <td><a href="{{ url_for('about') }}">
+           	   	  <font face="arial" color="#a0aaaf" size="3">
+           	       About
+           	     </font></a>
+           	   </td>
+			   <td><a href="{{ url_for('contact') }}">
+           	   	  <font face="arial" color="#a0aaaf" size="3">
+           	       Contact
+           	     </font></a>
+           	   </td>
+           	   <td><a href="{{ url_for('login') }}">
+           	   	  <font face="arial" color="#a0aaaf" size="3">
+           	       Sign In
+           	     </font></a>
+           	   </td>
+           	   <td><a href="{{ url_for('register') }}" style="background-color: #fe514b;">
+           	   	  <font face="arial" color="#a0aaaf" size="3">
+           	       Sign Up
+           	     </font></a>
+           	   </td>
+
+			   
+			   {% endif %}
+           	   
+           </tr>
+  	 	</table>
+  	 </td>
+  </tr>
+</table>
+<!-- End Header -->
+
+	
+
+		
+        <div class="formwrapper">
+            <h2 class="title">Sign Up</h2>
+            <form method="POST" action="/register">
+                <div class="form-field">{{ form.firstname.label }} {{ form.firstname }}
+                    {% if form.firstname.errors %}
+                    <ul class="errors">
+                        {% for error in form.firstname.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="form-field">{{ form.lastname.label }} {{ form.lastname }}
+                    {% if form.lastname.errors %}
+                    <ul class="errors">
+                        {% for error in form.lastname.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="form-field">{{ form.email.label }} {{ form.email }}
+                    {% if form.email.errors %}
+                    <ul class="errors">
+                        {% for error in form.email.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="form-field">{{ form.password.label }} {{ form.password }}
+                    {% if form.password.errors %}
+                    <ul class="errors">
+                        {% for error in form.password.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="form-field">{{ form.confirmPassword.label }} {{ form.confirmPassword }}
+                    {% if form.confirmPassword.errors %}
+                    <ul class="errors">
+                        {% for error in form.confirmPassword.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                {{ form.submit }}
+            </form>
+
+        </div>
+    </body>
+</html>

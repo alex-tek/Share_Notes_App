@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Niner Notes App</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='forms.css') }}">
+</head>
+<body>
+<!-- Start Header -->
+<table border="0" width="100%" cellpadding="0" cellspacing="0" >
+    <tr>
+        <td>
+            <table border="0" width="85%" cellpadding="10" cellspacing="0" align="center">
+                <tr>
+
+
+                    <td>
+                        <font face="arial" color="white" size="5">
+                            <strong>Notes</strong>
+                        </font>
+                    </td>
+                    <td width="30%">&nbsp;</td>
+
+                    <td><a href="{{ url_for('index') }}">
+                        <font face="arial" color="#a0aaaf" size="3">
+                            Home
+                        </font></a>
+                    </td>
+
+                    <td><a href="{{ url_for('get_notes') }}">
+                        <font face="arial" color="#a0aaaf" size="3">
+                            My Notes
+                        </font></a>
+                    </td>
+
+                    <td><a href="{{ url_for('new_note') }}">
+                        <font face="arial" color="#a0aaaf" size="3">
+                            Add Note
+                        </font></a>
+                    </td>
+                    <td><a href="{{ url_for('about') }}">
+                        <font face="arial" color="#a0aaaf" size="3">
+                            About
+                        </font></a>
+                    </td>
+                    <td><a href="{{ url_for('contact') }}">
+                        <font face="arial" color="#a0aaaf" size="3">
+                            Contact
+                        </font></a>
+                    </td>
+                    
+                    <td><a href="{{ url_for('homework') }}" style="background-color: #fe514b;">
+                        <font face="arial" color="#a0aaaf" size="3">
+                            Homework
+                        </font></a>
+                    </td>
+
+                    <td><a href="{{ url_for('logout') }}">
+                        <font face="arial" color="#a0aaaf" size="3">
+                            Sign Out
+                        </font></a>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<!-- End Header -->
+    <div class="form-field">
+        <h1 class="title">Add homework here:</h1>
+        <form action="{{ url_for('add') }}" method="POST">
+            <input type="text" name="homework-item">
+            <input type="submit" value="Add Item" class="button">
+        </form>
+    </div>
+    <div>
+        <h1 class="title">Current List</h1>
+        <div>
+            {% for item in incomplete %}
+            <ul>{{ item.text }} <a href="{{ url_for('complete', id=item.id) }}">Mark As Complete</a></ul>
+            {% endfor %}
+        </div>
+        <h1 class="title">Completed Items</h1>
+        <div>
+            {% for item in complete %}
+            <ul>{{ item.text }} <a href="{{ url_for('delete', id=item.id) }}">Delete</a></ul>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
